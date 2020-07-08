@@ -1,9 +1,9 @@
 import discord
 from discord.ext import commands
-import asyncio
-from webserver import keep_alive
-import os
 import random
+import os
+import asyncio
+from keep_alive import keep_alive
 import datetime
 from discord.utils import get
 import time
@@ -84,17 +84,12 @@ async def help(ctx):
   embed.set_author(name=f"BayaBot - Befehle")
   embed.set_footer(text=f"Angefordert von {ctx.author}", icon_url=ctx.author.avatar_url)
 
-  embed.add_field(name="Mathe :abacus: IN ARBEIT:octagonal_sign:", value="/mathe\nDu kannst minus (-), plus (+), mal (*), geteilt (/) und Klammern benutzen.\n\n\n\n", inline=False)
-  #embed.add_field(name="Moderation:hammer:", value="/ban\n/kick\n/delete\n/status\n", inline=False)
-  #embed.add_field(name="Fun:joy:", value="/hallo\n/sag\n/arne\n/counter", inline=False)
+  embed.add_field(name="Mathe :abacus:", value="/mathe\nDu kannst minus (-), plus (+), mal (*), geteilt (/) und Klammern benutzen.\n\n\n\n", inline=False)
   embed.add_field(name="Userinfo :bust_in_silhouette:", value="/userinfo\nZeigt Infos über einen User\n\n\n\n", inline=False)
   embed.add_field(name="Member :busts_in_silhouette:", value="/user\nZeigt Anzahl der User auf dem Server\n\n\n\n", inline=False) 
   embed.add_field(name="Würfel :game_die:", value="/dice\nLass Baya eine Zahl würfeln\n\n\n\n", inline=False)
   embed.add_field(name="Münze <:coin:729684347237564458>", value="/coinflip\nEin Coinflip mit Countdown\n\n\n\n", inline=False)
   embed.add_field(name="Schach <:chessknight:723527888862707823>", value="/chess\nSpiele Schach mit uns\n\n\n\n", inline=False)
-  
-
-  #embed.add_field(name="", value="", inline=False)
 
   await ctx.channel.send(embed=embed)
 
@@ -325,15 +320,6 @@ async def mathe(ctx, string = ""):
 
 
 
-@bot.command()
-async def join(ctx):
-  where = ctx.content.split(" ")[1]
-  channel = get(ctx.guild.channels, name=where)
-  voicechannel = await channel.connent()
-  voicechannel.join
-
-
-
-
+keep_alive()
 KEY = os.environ.get("TOKEN")
 bot.run(KEY)
